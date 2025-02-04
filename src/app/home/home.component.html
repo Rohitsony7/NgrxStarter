@@ -1,0 +1,48 @@
+<div class="users-container">
+    <h2>User Management</h2>
+    <table class="users-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of users$ | async; track user.id) {
+          @if (editingId !== user.id) {
+            <tr>
+              <td>{{ user.id }}</td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.username }}</td>
+              <td>{{ user.email }}</td>
+              <td>
+                <button class="edit-btn" (click)="startEditing(user)">Edit</button>
+              </td>
+            </tr>
+          } @else {
+            <tr>
+              <td>{{ user.id }}</td>
+              <td>
+                <input [formControl]="nameControl" class="form-input" />
+              </td>
+              <td>
+                <input [formControl]="usernameControl" class="form-input" />
+              </td>
+              <td>
+                <input [formControl]="emailControl" class="form-input" />
+              </td>
+              <td>
+                <button class="save-btn" (click)="saveUser()">Save</button>
+                <button class="cancel-btn" (click)="cancelEditing()">Cancel</button>
+              </td>
+            </tr>
+          }
+        }
+      </tbody>
+    </table>
+  </div>
+
+  

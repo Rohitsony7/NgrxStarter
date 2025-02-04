@@ -1,0 +1,200 @@
+
+.users-container {
+    padding: 1rem;
+    max-width: 96%;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+  
+  .users-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .users-table th,
+  .users-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .users-table th {
+    background-color: #f8fafc;
+    color: #4a5568;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+  }
+  
+  .users-table tr:hover {
+    background-color: #f8fafc;
+  }
+  
+  .users-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    transition: border-color 0.2s ease;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+  
+  /* Button Styles */
+  button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.875rem;
+  }
+  
+  .edit-btn {
+    background-color: #3b82f6;
+    color: white;
+  }
+  
+  .edit-btn:hover {
+    background-color: #2563eb;
+  }
+  
+  .save-btn {
+    background-color: #10b981;
+    color: white;
+    margin-right: 0.5rem;
+  }
+  
+  .save-btn:hover {
+    background-color: #059669;
+  }
+  
+  .cancel-btn {
+    background-color: #ef4444;
+    color: white;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #dc2626;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .users-container {
+      padding: 1rem;
+    }
+  
+    .users-table th,
+    .users-table td {
+      padding: 0.75rem;
+    }
+  
+    .users-table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  
+    button {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8125rem;
+    }
+  }
+  
+  /* Loading State */
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  /* Empty State */
+  .empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: #6b7280;
+  }
+  
+  /* Error State */
+  .error-message {
+    background-color: #fee2e2;
+    color: #dc2626;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Success Message */
+  .success-message {
+    background-color: #dcfce7;
+    color: #16a34a;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Animation for row updates */
+  @keyframes highlight {
+    0% {
+      background-color: #e2e8f0;
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+  
+  .row-updated {
+    animation: highlight 1s ease-out;
+  }
+  
+  /* Tooltip styles */
+  [data-tooltip] {
+    position: relative;
+    cursor: help;
+  }
+  
+  [data-tooltip]:before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem;
+    background-color: #1f2937;
+    color: white;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+  }
+  
+  [data-tooltip]:hover:before {
+    opacity: 1;
+    visibility: visible;
+  }
