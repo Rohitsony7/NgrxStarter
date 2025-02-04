@@ -3,7 +3,7 @@
 
   @if (error$ | async; as error) {
     <div class="error-message">
-      {{ error }}
+      {{ error.statusText}}
     </div>
   }
 
