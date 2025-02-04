@@ -1,5 +1,17 @@
 <div class="users-container">
-    <h2>User Management</h2>
+  <h2>User Management</h2>
+
+  @if (error$ | async; as error) {
+    <div class="error-message">
+      {{ error }}
+    </div>
+  }
+
+  @if (loading$ | async) {
+    <div class="loading-spinner">
+      Loading users...
+    </div>
+  } @else {
     <table class="users-table">
       <thead>
         <tr>
@@ -43,6 +55,5 @@
         }
       </tbody>
     </table>
-  </div>
-
-  
+  }
+</div>

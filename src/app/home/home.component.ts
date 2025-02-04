@@ -1,19 +1,11 @@
-// import {Component} from "@angular/core";
-
-// @Component({
-//   selector: 'home',
-//   templateUrl: './home.component.html',
-//   styles: [``]
-// })
-// export class HomeComponent {
-// }
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User } from '../core/models/user.model';
 import * as UserActions from '../store/users/users.actions';
+import { selectAllUsers, selectUsersLoading, selectUsersError } from '../store/users/users.selectors';
+import { AppState } from '../store/users/users.state';
 
 @Component({
   selector: 'home',
@@ -24,6 +16,9 @@ export class HomeComponent implements OnInit {
   users$: Observable<User[]>;
   editingId: number | null = null;
   editForm: FormGroup;
+  loading$: Observable<boolean>;
+  error$: Observable<any>;
+  
 
   // Create form controls with proper typing
   nameControl: FormControl = new FormControl('');
@@ -31,9 +26,13 @@ export class HomeComponent implements OnInit {
   emailControl: FormControl = new FormControl('');
 
   constructor(
-    private store: Store<{ users: { users: User[] } }>,
+    private store: Store<AppState>,
     private fb: FormBuilder
   ) {
+    this.users$ = this.store.select(selectAllUsers);
+    this.loading$ = this.store.select(selectUsersLoading);
+    this.error$ = this.store.select(selectUsersError);
+
     this.users$ = store.select(state => state.users.users);
     this.editForm = this.fb.group({
       name: this.nameControl,
